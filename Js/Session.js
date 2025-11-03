@@ -13,3 +13,4 @@ function getUsuario(){
 
     return JSON.parse(usuario);
 }
+

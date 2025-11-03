@@ -6,6 +6,7 @@ function redirecionarMenu(){
 function montarMenu(){
     const TELA_BOAS_VINDAS = document.getElementById("BoasVindas");
     const TELA_MEUS_TORNEIOS = document.getElementById("MeusTorneios");
+    const TELA_TORNEIOS = document.getElementById("TorneiosAtivos");
     const TELA_CRIACAO = document.getElementById("Criacao");
 
     const usuario = getUsuario();
@@ -18,9 +19,29 @@ function montarMenu(){
 
     TELA_BOAS_VINDAS.innerHTML = stringHtml;
     TELA_MEUS_TORNEIOS.innerHTML = `
-        <h2>Meus Torneios:</h2>
+        <h2>👤 Meus Torneios:</h2>
         <p>Tá Vazio, O Samuel Ainda vai cuidar disso...🙃😶‍🌫️</p>
     `;
 
+    const TORNEIOS_ATIVOS = obterTorneiosAtivos();
+    stringHtml = "<h2>🔥 Torneios: </h2>";
+
+    if(TORNEIOS_ATIVOS.length == 0){
+        stringHtml += "<p>Sem torneios</p>"
+    }
+    else{
+        TORNEIOS_ATIVOS.forEach(torneio => {
+            stringHtml += `
+                <div class="torneio">
+                    <h3>${torneio.nome}</h3>
+                    <p>👤 ${torneio.autor}</p>
+                    <p>${torneio.descricao}</p>
+                    <button>Ver Mais</button>
+                </div>
+            `;
+        });
+    }
+
+    TELA_TORNEIOS.innerHTML = stringHtml; 
     TELA_CRIACAO.innerHTML = `<button>Criar Novo Torneio</button>`
 }
