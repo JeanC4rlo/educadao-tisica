@@ -5,7 +5,6 @@ function setUsuario(usuario){
 
 function getUsuario(){
     let  usuario = localStorage.getItem("UsuarioAtivo");
-    console.log(usuario);
 
     if(usuario == null || usuario == undefined){
         usuario == null;

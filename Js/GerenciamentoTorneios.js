@@ -18,14 +18,15 @@ function setUsuario(usuario){
     localStorage.setItem("UsuarioAtivo", JSON.stringify(usuario));
 }
 
-function createTorneio(autorP, nomeP, descricaoP, visibilidadeP, esporteP, placarP){
+function createTorneio(autorP, nomeP, descricaoP, visibilidadeP, esporteP, tipoP, placarConfigP){
     let DadosNovoTorneio = {
         autor: autorP,
         nome: nomeP,
         descricao: descricaoP,
         visibilidade: visibilidadeP,
         esporte: esporteP,
-        placar: placarP,
+        tipoCampeonato: tipoP,
+        placarConfig: placarConfigP,
     }
 
     const TORNEIOS_ATIVOS = obterTorneiosAtivos();
@@ -33,12 +34,15 @@ function createTorneio(autorP, nomeP, descricaoP, visibilidadeP, esporteP, placa
     salvarTorneiosAtivos(TORNEIOS_ATIVOS);
 }
 
-function getTorneio(nome){
+function getTorneio(nome) {
     const TORNEIOS_ATIVOS = obterTorneiosAtivos();
 
-    TORNEIOS_ATIVOS.forEach(torneio => {
-        if(torneio.nome === nome){
+    for (let torneio of TORNEIOS_ATIVOS) {
+        if (torneio.nome === nome) {
+            console.log(torneio);
             return torneio;
         }
-    });
+    }
+
+    return null;
 }

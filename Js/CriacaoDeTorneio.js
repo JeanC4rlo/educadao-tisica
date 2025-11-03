@@ -20,34 +20,55 @@ function IniciarSecaoCriacao(){
     string += 
     `
         <h2>Criar Torneio:</h2>
-        <input id="usuarioInput" type="text" placeholder="Nome do Torneio">
-        <br>
-        <textarea id="descricao" name="descricao" rows="4" cols="30" placeholder="Descrição do Torneio..."></textarea>
-        <br><br>
-        
-        <input type="radio" name="visibilidade" value="Publico"> Publico
-        <input type="radio" name="visibilidade" value="Privado"> Privado
-        <br><br>
+            <form onsubmit="cadastrarTorneio(event)">
+            <input id="nomeTorneio" type="text" placeholder="Nome do Torneio">
+            <br>
+            <textarea id="descricao" rows="4" cols="30" placeholder="Descrição do Torneio..."></textarea>
+            <br><br>
+            
+            <input type="radio" name="visibilidade" value="Publico"> Publico
+            <input type="radio" name="visibilidade" value="Privado"> Privado
+            <br><br>
 
-        <select id="nacionalidade" required>
-            <option value="SC" selected>Futebol</option>
-            <option value="BS">Basquete</ofecharSecao("ConfigurarTabela");
-    fecharSecao("ConfigurarPlacar");ption>
-            <option value="VL">Volei</option>
-            <option value="FT">Futebol Amereicano</option>
-            <option value="CH">Xadrez</option>
-            <option value="CUSTOM">Personalizado...</option>
-        </select>
-        <br>
+            <select id="esporte" required>
+                <option value="FUTEBOL" selected>Futebol</option>
+                <option value="BASQUETE">Basquete</option>
+                <option value="VOLEI">Volei</option>
+                <option value="FUTEBOLAMERICANO">Futebol Amereicano</option>
+                <option value="XADREZ">Xadrez</option>
+                <option value="CUSTOM">Personalizado...</option>
+            </select>
+            <br>
 
-        <button onclick="InciarSecaoTabelas()">Configurar Placares</button>
-        <br>
+            <h2>Configurar Tabela:</h2>
+                    
+            <table>
+                <tr>
+                    <th>Lado A</th>
+                    <th>Versus</th>
+                    <th>Lado B</th>
+                </tr>
+                <tr>
+                    <th>0</th>
+                    <th>-</th>
+                    <th>0</th>
+                </tr>
+            </table>
 
-        <input type="radio" name="estilo" value="Eliminatorias"> Eliminatórias
-        <input type="radio" name="estilo" value="Liga"> Pontos Corridos
-        <br><br>
+            <h3>Quantidade de Sets:</h3>
+            <input type="number" id="qntSets" value="1">
+            <br><br>
 
-        <button>Criar Torneio!</button>
+            <h3>Valor dos Pontos:</h3>
+            <input type="number" id="ptsValue" value="1">
+            <br><br>
+
+            <input type="radio" name="estilo" value="Eliminatorias"> Eliminatórias
+            <input type="radio" name="estilo" value="Liga"> Pontos Corridos
+            <br><br>
+
+            <button type="submit">Criar Torneio!</button>
+        </form>
     `;
 
     SECAO_CRIACAO.innerHTML = string;
@@ -56,43 +77,34 @@ function IniciarSecaoCriacao(){
     fecharSecao("ConfigurarPlacar");
 }
 
-function InciarSecaoTabelas(){
-    let string = "";
-
-    //Template p mexer dps q o CSS tiver pronto! Trabalhe Jeans!
-    string += 
-    `
-        <h2>Configurar Tabela:</h2>
-                
-        <table>
-            <tr>
-                <th>Lado A</th>
-                <th>Versus</th>
-                <th>Lado B</th>
-            </tr>
-            <tr>
-                <th>0</th>
-                <th>-</th>
-                <th>0</th>
-            </tr>
-        </table>
-
-        <h3>Quantidade de Sets:</h3>
-        <input type="number" name="qntSets" value="1">
-        <br><br>
-
-        <h3>Valor dos Pontos:</h3>
-        <input type="number" name="PontosValue" value="1">
-        <br><br>
-
-        <button>Definir</button>
-        <button onclick="IniciarSecaoCriacao()">Voltar</button>
-    `;
-
-    SECAO_TABELAS.innerHTML = string;
-    abrirSecao("ConfigurarTabela");
-    fecharSecao("CriarTorneio");
-    fecharSecao("ConfigurarPlacar");
-}
-
 IniciarSecaoCriacao();
+
+function cadastrarTorneio(event) {
+    event.preventDefault(); 
+
+    const NOME = document.getElementById("nomeTorneio").value.trim();
+    const DESCRICAO = document.getElementById("descricao").value.trim();
+
+    const VISIBILIDADE = document.querySelector('input[name="visibilidade"]:checked');
+    const TIPO_VISAO = VISIBILIDADE ? VISIBILIDADE.value : "";
+
+    const ESPORTE = document.getElementById("esporte").value.trim();
+
+    const CAMPEONATO = document.querySelector('input[name="estilo"]:checked');
+    const TIPO_CAMPEONATO = CAMPEONATO ? CAMPEONATO.value : "";
+
+    const QNT_SETS = document.getElementById("qntSets").value.trim();
+    const PTS_VALUE = document.getElementById("ptsValue").value.trim();
+
+    if (!NOME || !DESCRICAO || !VISIBILIDADE || !TIPO_VISAO || !ESPORTE || !CAMPEONATO || !TIPO_CAMPEONATO ||!QNT_SETS ||!PTS_VALUE) {
+        abrirPopUp("Preencha Corretamente Todos os Campos!");
+        return;
+    }
+
+    const AUTOR = getUsuario().nome;
+    const PLACAR = {
+        qntSets: QNT_SETS,
+    }
+
+    createTorneio(AUTOR, NOME, DESCRICAO, TIPO_VISAO, ESPORTE, TIPO_CAMPEONATO, PLACAR);
+}

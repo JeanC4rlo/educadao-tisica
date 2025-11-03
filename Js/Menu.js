@@ -1,6 +1,5 @@
 function redirecionarMenu(){
     window.location = "main.html";
-
 }
 
 function montarMenu(){
@@ -10,7 +9,6 @@ function montarMenu(){
     const TELA_CRIACAO = document.getElementById("Criacao");
 
     const usuario = getUsuario();
-    console.log(usuario);
 
     let stringHtml = `
         <h1>Bem Vindo ${usuario.nome} ${usuario.sobrenome}!</h1>
@@ -36,12 +34,19 @@ function montarMenu(){
                     <h3>${torneio.nome}</h3>
                     <p>👤 ${torneio.autor}</p>
                     <p>${torneio.descricao}</p>
-                    <button>Ver Mais</button>
+                    <button onclick="verTorneio('${torneio.nome}')">Ver Mais</button>
                 </div>
             `;
         });
     }
 
     TELA_TORNEIOS.innerHTML = stringHtml; 
-    TELA_CRIACAO.innerHTML = `<button>Criar Novo Torneio</button>`
+    TELA_CRIACAO.innerHTML = `<button onclick="window.location = 'CriarTorneio.html'">Criar Novo Torneio</button>`
+}
+
+function verTorneio(nome){
+    const TORNEIO = getTorneio(nome);
+    const TELA_TORNEIOS = document.getElementById("TorneiosAtivos");
+
+    
 }
