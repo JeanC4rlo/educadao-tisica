@@ -42,25 +42,25 @@ function IniciarSecaoCriacao(){
 
             <h2>Configurar Tabela:</h2>
                     
-            <table>
+            <table id="placar-config">
                 <tr>
                     <th>Lado A</th>
                     <th>Versus</th>
                     <th>Lado B</th>
                 </tr>
                 <tr>
-                    <th>0</th>
+                    <th>1</th>
                     <th>-</th>
-                    <th>0</th>
+                    <th>1</th>
                 </tr>
             </table>
 
             <h3>Quantidade de Sets:</h3>
-            <input type="number" id="qntSets" value="1">
+            <input type="number" min="1" id="qntSets" value="1">
             <br><br>
 
             <h3>Valor dos Pontos:</h3>
-            <input type="number" id="ptsValue" value="1">
+            <input type="number" min="1" id="ptsValue" value="1">
             <br><br>
 
             <input type="radio" name="estilo" value="Eliminatorias"> Eliminatórias
@@ -72,12 +72,55 @@ function IniciarSecaoCriacao(){
     `;
 
     SECAO_CRIACAO.innerHTML = string;
-    abrirSecao("CriarTorneio");
+    abrirSecao("placar-config");
     fecharSecao("ConfigurarTabela");
     fecharSecao("ConfigurarPlacar");
 }
 
+function gerarSets(sets, value){
+    let string = "";
+    for(let i =0; i < sets; i ++){
+        string += `
+            <tr>
+                <th>${value}</th>
+                <th>-</th>
+                <th>${value}</th>
+            </tr>
+        `;
+    }
+
+    return string;
+}
+
+function placarUpdate(){
+    const TABLE = document.getElementById("placar-config"); 
+    const INPUT_SETS = document.getElementById("qntSets"); 
+    const INPUT_PTS = document.getElementById("ptsValue");
+
+    function update(){
+        let qntSets = parseInt(INPUT_SETS.value, 10);
+        if (isNaN(qntSets) || qntSets < 0) qntSets = 0;
+        let pts = INPUT_PTS.value;
+
+        let html = `
+            <tr>
+                <th>Lado A</th>
+                <th>Versus</th>
+                <th>Lado B</th>
+            </tr>
+        `;
+        html += gerarSets(qntSets, pts);
+        TABLE.innerHTML = html;
+    }
+
+    INPUT_SETS.addEventListener("input", update);
+    INPUT_PTS.addEventListener("input", update);
+
+    update();
+}
+
 IniciarSecaoCriacao();
+placarUpdate();
 
 function cadastrarTorneio(event) {
     event.preventDefault(); 

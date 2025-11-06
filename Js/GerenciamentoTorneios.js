@@ -39,10 +39,8 @@ function getTorneio(nome) {
 
     for (let torneio of TORNEIOS_ATIVOS) {
         if (torneio.nome === nome) {
-            console.log(torneio);
             return torneio;
         }
     }
-
     return null;
 }

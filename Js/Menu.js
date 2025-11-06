@@ -15,13 +15,34 @@ function montarMenu(){
         <p>🌐: ${getPaisString(usuario.pais)}</p>
     `;
 
-    TELA_BOAS_VINDAS.innerHTML = stringHtml;
-    TELA_MEUS_TORNEIOS.innerHTML = `
-        <h2>👤 Meus Torneios:</h2>
-        <p>Tá Vazio, O Samuel Ainda vai cuidar disso...🙃😶‍🌫️</p>
-    `;
-
     const TORNEIOS_ATIVOS = obterTorneiosAtivos();
+
+    TELA_BOAS_VINDAS.innerHTML = stringHtml;
+    stringHtml = "<h2>👤 Meus Torneios:</h2>";
+
+    let vazio = true;
+    TORNEIOS_ATIVOS.forEach(torneio =>{
+        if(torneio.autor == usuario.nome){
+            vazio = false;
+            stringHtml += `
+                <div class="torneio">
+                    <img src="${getImgEsporte(torneio.esporte)}">
+                    <div class="torneio-dados">
+                        <h3>${torneio.nome}</h3>
+                        <p>Esporte: ${torneio.esporte}</p>
+                        <p>${torneio.descricao}</p>
+                        <button onclick="verTorneio('${torneio.nome}')">Ver Mais</button>
+                        <button onclick="">Editar</button>
+                    </div>
+                </div>
+            `;
+        }
+    })
+    if(vazio){
+        stringHtml += "<p>Você não possui nenhum torneio!</p>";
+    }
+    TELA_MEUS_TORNEIOS.innerHTML = stringHtml;
+    
     stringHtml = "<h2>🔥 Torneios: </h2>";
 
     if(TORNEIOS_ATIVOS.length == 0){
@@ -31,10 +52,13 @@ function montarMenu(){
         TORNEIOS_ATIVOS.forEach(torneio => {
             stringHtml += `
                 <div class="torneio">
-                    <h3>${torneio.nome}</h3>
-                    <p>👤 ${torneio.autor}</p>
-                    <p>${torneio.descricao}</p>
-                    <button onclick="verTorneio('${torneio.nome}')">Ver Mais</button>
+                    <img src="${getImgEsporte(torneio.esporte)}">
+                    <div class="torneio-dados">
+                        <h3>${torneio.nome}</h3>
+                        <p>👤 Autor: @${torneio.autor}</p>
+                        <p>${torneio.descricao}</p>
+                        <button onclick="verTorneio('${torneio.nome}')">Ver Mais</button>
+                    </div>
                 </div>
             `;
         });
@@ -44,9 +68,12 @@ function montarMenu(){
     TELA_CRIACAO.innerHTML = `<button onclick="window.location = 'CriarTorneio.html'">Criar Novo Torneio</button>`
 }
 
+function torneioTarget(torneio){
+    localStorage.setItem("torneioAlvo", JSON.stringify(torneio));
+} 
+
 function verTorneio(nome){
     const TORNEIO = getTorneio(nome);
-    const TELA_TORNEIOS = document.getElementById("TorneiosAtivos");
-
-    
+    torneioTarget(TORNEIO);
+    window.location = "torneio.html";
 }

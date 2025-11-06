@@ -1,40 +1,39 @@
-class Torneio{
-    constructor(nome, descricao, visibilidade, esporte, tipo, multV, multE, multD){
-        this.nome = nome;
-        this.descricao = descricao;
-        this.visibilidade = visibilidade;
-        this.esporte = esporte;
-        this.tipo = tipo;
+const SECAO_VIEW = document.getElementById("view");
 
-        this.multD = multD;
-        this.multE = multE;
-        this.multV = multV;
+function getTorneioTarget(){
+    let  torneioAlvo = localStorage.getItem("torneioAlvo");
 
-        this.confrontos = [];
-        this.equipes = [];
+    if(torneioAlvo == null || torneioAlvo == undefined){
+        torneioAlvo == null;
     }
 
-    getAllEquipes(){
-        return this.equipes;
-    }
-
-    getMultiplicadorVitoria(){
-        return this.multV;
-    }
-    
-    getMultiplicadorEmpate(){
-        return this.multE;
-    }
-
-    getMultiplicadorDerrota(){
-        return this.multD;
-    }
-
-    getAllConfrontos(){
-        return this.confrontos;
-    }
-
-    addConfronto(confronto){
-        this.confrontos.push(confronto);
-    }
+    return JSON.parse(torneioAlvo);
 }
+
+function mostrarTorneio(){
+    const TORNEIO = getTorneioTarget();
+    let stringHtml = "<h1>Visualizar Torneio:</h1>";
+
+    if(TORNEIO == null){
+        stringHtml += "<p>Nenhum Torneio Escolhido</p>";
+    }
+    else{
+        stringHtml += `
+            <div class="show-torneio">
+                <img src="${getImgEsporte(TORNEIO.esporte)}">
+                <h2>${TORNEIO.nome}</h2>
+                <a href="">Autor: @${TORNEIO.autor}</a>
+                <p>Descrição: ${TORNEIO.descricao}</p>
+
+                <h3>Mais Informações:</h3>
+                <p>Esporte: ${TORNEIO.esporte}</p>
+                <p>Campeonato: ${TORNEIO.tipoCampeonato}</p>
+                <button>Seguir</button>
+            </div>
+        `;
+    }
+
+    SECAO_VIEW.innerHTML = stringHtml;
+}
+
+mostrarTorneio();
