@@ -11,6 +11,7 @@ function montarMenu(){
     const usuario = getUsuario();
 
     let stringHtml = `
+        <div class="avatar">${usuario.nome.slice(0, 2)}</div>
         <h1>Bem Vindo ${usuario.nome} ${usuario.sobrenome}!</h1>
         <p>🌐: ${getPaisString(usuario.pais)}</p>
     `;
@@ -29,8 +30,8 @@ function montarMenu(){
                     <img src="${getImgEsporte(torneio.esporte)}">
                     <div class="torneio-dados">
                         <h3>${torneio.nome}</h3>
-                        <p>Esporte: ${torneio.esporte}</p>
-                        <p>${torneio.descricao}</p>
+                        <p>Esporte: <b>${torneio.esporte}</b> | Visibilidade: <b>${torneio.visibilidade}</b></p>
+                        <p>${torneio.descricao.slice(0, 50)}...</p>
                         <button onclick="verTorneio('${torneio.nome}')">Ver Mais</button>
                         <button onclick="">Editar</button>
                     </div>
@@ -50,17 +51,19 @@ function montarMenu(){
     }
     else{
         TORNEIOS_ATIVOS.forEach(torneio => {
-            stringHtml += `
-                <div class="torneio">
-                    <img src="${getImgEsporte(torneio.esporte)}">
-                    <div class="torneio-dados">
-                        <h3>${torneio.nome}</h3>
-                        <p>👤 Autor: @${torneio.autor}</p>
-                        <p>${torneio.descricao}</p>
-                        <button onclick="verTorneio('${torneio.nome}')">Ver Mais</button>
+            if(torneio.visibilidade != "Privado"){
+                stringHtml += `
+                    <div class="torneio">
+                        <img src="${getImgEsporte(torneio.esporte)}">
+                        <div class="torneio-dados">
+                            <h3>${torneio.nome}</h3>
+                            <p>👤 Autor: @${torneio.autor}</p>
+                            <p>${torneio.descricao.slice(0, 50)}...</p>
+                            <button onclick="verTorneio('${torneio.nome}')">Ver Mais</button>
+                        </div>
                     </div>
-                </div>
-            `;
+                `;
+            }
         });
     }
 

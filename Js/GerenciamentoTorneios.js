@@ -19,7 +19,25 @@ function setUsuario(usuario){
 }
 
 function createTorneio(autorP, nomeP, descricaoP, visibilidadeP, esporteP, tipoP, placarConfigP){
+    
+    const TORNEIOS_ATIVOS = obterTorneiosAtivos();
+    let id = 0;
+
+    if(TORNEIOS_ATIVOS.length != 0){
+        console.log(TORNEIOS_ATIVOS.length);
+
+        const ULTIMO = TORNEIOS_ATIVOS[TORNEIOS_ATIVOS.length - 1];
+        console.log(ULTIMO);
+
+        if(ULTIMO.id != null || ULTIMO.id != undefined){
+            console.log(ULTIMO.id);
+            id = ULTIMO.id + 1;
+            console.log(id);
+        }
+    }
+        
     let DadosNovoTorneio = {
+        id: id,
         autor: autorP,
         nome: nomeP,
         descricao: descricaoP,
@@ -27,11 +45,14 @@ function createTorneio(autorP, nomeP, descricaoP, visibilidadeP, esporteP, tipoP
         esporte: esporteP,
         tipoCampeonato: tipoP,
         placarConfig: placarConfigP,
+        confrontos: [],
+        participantes: [],
     }
 
-    const TORNEIOS_ATIVOS = obterTorneiosAtivos();
+    
     TORNEIOS_ATIVOS.push(DadosNovoTorneio);
     salvarTorneiosAtivos(TORNEIOS_ATIVOS);
+    
 }
 
 function getTorneio(nome) {
