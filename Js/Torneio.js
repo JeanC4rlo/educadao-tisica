@@ -28,12 +28,23 @@ function mostrarTorneio(){
                 <h3>Mais Informações:</h3>
                 <p>Esporte: ${TORNEIO.esporte}</p>
                 <p>Campeonato: ${TORNEIO.tipoCampeonato}</p>
-                <button>Seguir</button>
+                <p id="numero-de-seguidores">💫 Hype: ${TORNEIO.seguidores}</p>
+                <button id="botao-seguir" onclick="ficSeguidores(${TORNEIO.seguidores})">Hypar</button>
             </div>
         `;
     }
 
     SECAO_VIEW.innerHTML = stringHtml;
+    loadSecaoMenu(1);
+}
+
+function ficSeguidores(num){
+    const SEGUIDORES = num + 1;
+    const BOTAO = document.getElementById("botao-seguir");
+    const DISPLAY = document.getElementById("numero-de-seguidores");
+
+    BOTAO.innerHTML = "Hypado";
+    DISPLAY.innerHTML = `💫 Hype: ${SEGUIDORES}`;
 }
 
 mostrarTorneio();

@@ -1,0 +1,18 @@
+.menu-options{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5px;
+}
+
+.menu-options button{
+    background-color: none;
+    border: none;
+    cursor: pointer;
+}
+
+#option-target{
+    color: blue;
+    font-weight: bold;
+    border-bottom: blue 2px solid;
+}

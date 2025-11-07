@@ -38,6 +38,7 @@ function createTorneio(autorP, nomeP, descricaoP, visibilidadeP, esporteP, tipoP
         
     let DadosNovoTorneio = {
         id: id,
+        seguidores: Math.floor(Math.random() * (1500 - 1 + 1) + 1),
         autor: autorP,
         nome: nomeP,
         descricao: descricaoP,
