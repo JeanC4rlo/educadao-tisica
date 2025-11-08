@@ -16,8 +16,10 @@ Coisas Pra Gente apresentar no Trabalho do Cleitão:
 - Uns refactoring aí
 - Estilizar
 
-## CUSTO: 
+# SISTEMA DESSES NO MUNDO DE ALICE, ILHA DE CARAS, MUNDO DAS IDEIAS...
 - De acordo com o ChatGpt:
+  
+## CUSTO: 
   - 💰 Para aplicações relativamente simples (poucos usuários, funcionalidades básicas ), os valores normalmente começam em US$ 15.000 a US$ 30.000.
 
 ## TEMPO DE DESENVOLVIMENTO:
