@@ -1,5 +1,6 @@
 const SECAO_VIEW = document.getElementById("view");
 
+
 function getTorneioTarget(){
     let  torneioAlvo = localStorage.getItem("torneioAlvo");
 
@@ -10,41 +11,20 @@ function getTorneioTarget(){
     return JSON.parse(torneioAlvo);
 }
 
-function mostrarTorneio(){
-    const TORNEIO = getTorneioTarget();
-    let stringHtml = "<h1>Visualizar Torneio:</h1>";
+function loadSecaoMenu(id){
+    const botoes = [
+        { texto: "Principal", acao: "mostrarTorneio()" },
+        { texto: "Confrontos", acao: "mostrarConfrontos()" },
+        { texto: "Competidores", acao: "mostrarCompetidores()" }
+    ];
 
-    if(TORNEIO == null){
-        stringHtml += "<p>Nenhum Torneio Escolhido</p>";
-    }
-    else{
-        stringHtml += `
-            <div class="show-torneio">
-                <img src="${getImgEsporte(TORNEIO.esporte)}">
-                <h2>${TORNEIO.nome}</h2>
-                <a href="">Autor: @${TORNEIO.autor}</a>
-                <p>Descrição: ${TORNEIO.descricao}</p>
-
-                <h3>Mais Informações:</h3>
-                <p>Esporte: ${TORNEIO.esporte}</p>
-                <p>Campeonato: ${TORNEIO.tipoCampeonato}</p>
-                <p id="numero-de-seguidores">💫 Hype: ${TORNEIO.seguidores}</p>
-                <button id="botao-seguir" onclick="ficSeguidores(${TORNEIO.seguidores})">Hypar</button>
-            </div>
-        `;
-    }
-
-    SECAO_VIEW.innerHTML = stringHtml;
-    loadSecaoMenu(1);
+    SECAO_MENU.innerHTML = `
+        <div class="menu-options">
+            ${botoes.map((botao, index) => {
+                const isAtivo = (index + 1) === id ? 'id="option-target"' : '';
+                return `<button ${isAtivo} onclick="${botao.acao}">${botao.texto}</button>`;
+            }).join("")}
+        </div>
+    `;
 }
 
-function ficSeguidores(num){
-    const SEGUIDORES = num + 1;
-    const BOTAO = document.getElementById("botao-seguir");
-    const DISPLAY = document.getElementById("numero-de-seguidores");
-
-    BOTAO.innerHTML = "Hypado";
-    DISPLAY.innerHTML = `💫 Hype: ${SEGUIDORES}`;
-}
-
-mostrarTorneio();

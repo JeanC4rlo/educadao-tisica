@@ -66,3 +66,14 @@ function getTorneio(nome) {
     }
     return null;
 }
+
+function getTorneioById(id) {
+    const TORNEIOS_ATIVOS = obterTorneiosAtivos();
+
+    for (let torneio of TORNEIOS_ATIVOS) {
+        if (torneio.id === id) {
+            return torneio;
+        }
+    }
+    return null;
+}

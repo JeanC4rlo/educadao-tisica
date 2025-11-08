@@ -1,36 +1,72 @@
 const SECAO_MENU = document.getElementById("menu");
+const TORNEIO = getTorneioTarget();
+const TITULO = document.getElementById("Torneio-Title");
 
-function loadSecaoMenu(id){
-    const botoes = [
-        { texto: "Principal", acao: "mostrarTorneio()" },
-        { texto: "Confrontos", acao: "mostrarConfrontos()" },
-        { texto: "Competidores", acao: "mostrarCompetidores()" }
-    ];
+TITULO.innerHTML = `${TORNEIO.nome}`;
 
-    SECAO_MENU.innerHTML = `
-        <div class="menu-options">
-            ${botoes.map((botao, index) => {
-                const isAtivo = (index + 1) === id ? 'id="option-target"' : '';
-                return `<button ${isAtivo} onclick="${botao.acao}">${botao.texto}</button>`;
-            }).join("")}
-        </div>
-    `;
+function mostrarTorneio(){
+    let stringHtml = "<h1>Visualizar Torneio:</h1>";
+
+    if(TORNEIO == null){
+        stringHtml += "<p>Nenhum Torneio Escolhido</p>";
+    }
+    else{
+        stringHtml += `
+            <div class="show-torneio">
+                <img src="${getImgEsporte(TORNEIO.esporte)}">
+                <h2>${TORNEIO.nome}</h2>
+                <a href="">Autor: @${TORNEIO.autor}</a>
+                <p>Descrição: ${TORNEIO.descricao}</p>
+
+                <h3>Mais Informações:</h3>
+                <p>Esporte: ${TORNEIO.esporte}</p>
+                <p>Campeonato: ${TORNEIO.tipoCampeonato}</p>
+                <p id="numero-de-seguidores">💫 Hype: ${TORNEIO.seguidores}</p>
+                <button id="botao-seguir" onclick="ficSeguidores(${TORNEIO.seguidores})">Hypar</button>
+            </div>
+        `;
+    }
+
+    SECAO_VIEW.innerHTML = stringHtml;
+    loadSecaoMenu(1);
 }
 
 function mostrarConfrontos(){
-    const TORNEIO = getTorneioTarget();
     let stringHtml = "<h1>Confrontos:</h1>";
 
     if(TORNEIO.confrontos.length == 0){
         stringHtml += `<p><b>${TORNEIO.nome}</b> ainda não possui confrontos definidos.</p>`;
-    } 
-
+    } else{
+        const Array = TORNEIO.confrontos.slice().reverse();
+            Array.forEach(confronto => {
+                if(confronto.status == "concluído"){
+                    stringHtml += `
+                            <div>
+                                <p>Data: ${confronto.data} | local: ${confronto.local}</p>
+                                <div>${confronto.nomeLadoA}</div>
+                                <div>Versus</div>
+                                <div>${confronto.nomeLadoB}</div>
+                            </div>
+                    `;
+                } else {
+                    stringHtml += `
+                            <div>
+                                <p>Data: ${confronto.data} | local: ${confronto.local}</p>
+                                <div>${confronto.nomeLadoA}</div>
+                                <div>${confronto.placarLadoA}</div>
+                                <div>Versus</div>
+                                <div>${confronto.placarLadoB}</div>
+                                <div>${confronto.nomeLadoB}</div>
+                            </div>
+                    `;
+                }
+        });
+    }
     SECAO_VIEW.innerHTML = stringHtml;
     loadSecaoMenu(2);
 }
 
 function mostrarCompetidores(){
-    const TORNEIO = getTorneioTarget();
     let stringHtml = "<h1>Competidores:</h1>";
 
     if(TORNEIO.participantes.length == 0){
@@ -47,7 +83,7 @@ function mostrarCompetidores(){
                     </tr>
             `;
 
-        Array.participantes.forEach(participante => {
+        Array.forEach(participante => {
             stringHtml += `
                     <tr>
                         <th> - </th>
@@ -64,7 +100,14 @@ function mostrarCompetidores(){
     loadSecaoMenu(3);
 }
 
+function ficSeguidores(num){
+    const SEGUIDORES = num + 1;
+    const BOTAO = document.getElementById("botao-seguir");
+    const DISPLAY = document.getElementById("numero-de-seguidores");
 
+    BOTAO.innerHTML = "Hypado";
+    DISPLAY.innerHTML = `💫 Hype: ${SEGUIDORES}`;
+}
 
-
+mostrarTorneio();
 loadSecaoMenu(1);
