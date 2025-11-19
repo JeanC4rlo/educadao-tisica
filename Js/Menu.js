@@ -1,5 +1,5 @@
 function redirecionarMenu(){
-    window.location = "main.html";
+    window.location.replace('main.html');
 }
 
 function montarMenu(){
@@ -11,37 +11,41 @@ function montarMenu(){
     const usuario = getUsuario();
 
     let stringHtml = `
-        <div onclick="window.location = 'mostrarUsuario.html'" class="avatar">${usuario.nome.slice(0, 2)}</div>
+        <div onclick="window.location.replace('mostrarUsuario.html')" class="avatar">${usuario.nome.slice(0, 2)}</div>
         <h1>Bem Vindo ${usuario.nome} ${usuario.sobrenome}!</h1>
     `;
 
     const TORNEIOS_ATIVOS = obterTorneiosAtivos();
 
     TELA_BOAS_VINDAS.innerHTML = stringHtml;
-    stringHtml = "<h2>Meus Torneios:</h2>";
-
-    let vazio = true;
-    TORNEIOS_ATIVOS.forEach(torneio =>{
-        if(torneio.autor == usuario.nome){
-            vazio = false;
-            stringHtml += `
-                <div class="torneio">
-                    <img src="${getImgEsporte(torneio.esporte)}">
-                    <div class="torneio-dados">
-                        <h3>${torneio.nome}</h3>
-                        <p>Esporte: <b>${torneio.esporte}</b> | Visibilidade: <b>${torneio.visibilidade}</b></p>
-                        <p>${torneio.descricao.slice(0, 50)}...</p>
-                        <button onclick="verTorneio('${torneio.nome}')">Ver Mais</button>
-                        <button onclick="editarTorneio('${torneio.nome}')">Editar</button>
+    if(usuario.tipoUsuario == "Organizador"){
+        stringHtml = "<h2>Meus Torneios:</h2>";
+        let vazio = true;
+        TORNEIOS_ATIVOS.forEach(torneio =>{
+            if(torneio.autor == usuario.nome){
+                vazio = false;
+                stringHtml += `
+                    <div class="torneio">
+                        <img src="${getImgEsporte(torneio.esporte)}">
+                        <div class="torneio-dados">
+                            <h3>${torneio.nome}</h3>
+                            <p>Esporte: <b>${torneio.esporte}</b> | Visibilidade: <b>${torneio.visibilidade}</b></p>
+                            <p>${torneio.descricao.slice(0, 50)}...</p>
+                            <button onclick="verTorneio('${torneio.nome}')">Ver Mais</button>
+                            <button onclick="editarTorneio('${torneio.nome}')">Editar</button>
+                        </div>
                     </div>
-                </div>
-            `;
+                `;
+            }
+        })
+        if(vazio){
+            stringHtml += "<p>Você não possui nenhum torneio!</p>";
         }
-    })
-    if(vazio){
-        stringHtml += "<p>Você não possui nenhum torneio!</p>";
+        TELA_MEUS_TORNEIOS.innerHTML = stringHtml;
     }
-    TELA_MEUS_TORNEIOS.innerHTML = stringHtml;
+    else{
+        TELA_MEUS_TORNEIOS.style.display = "none";
+    }
     
     stringHtml = "<h2>Torneios Ativos: </h2>";
 
@@ -66,8 +70,10 @@ function montarMenu(){
         });
     }
 
-    TELA_TORNEIOS.innerHTML = stringHtml; 
-    TELA_CRIACAO.innerHTML = `<button onclick="window.location = 'CriarTorneio.html'">Criar Novo Torneio</button>`
+    TELA_TORNEIOS.innerHTML = stringHtml;
+    if(usuario.tipoUsuario == "Organizador"){
+        TELA_CRIACAO.innerHTML = `<button onclick="window.location = 'CriarTorneio.html'">Criar Novo Torneio</button>`;
+    }
 }
 
 function torneioTarget(torneio){

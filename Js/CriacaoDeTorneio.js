@@ -184,5 +184,5 @@ function cadastrarTorneio(event) {
     createTorneio(AUTOR, NOME, DESCRICAO, TIPO_VISAO, ESPORTE, TIPO_CAMPEONATO, PLACAR);
     abrirPopUp(`Torneio: ${NOME} foi criado com sucesso! Agora cadastre Equipes e Jogos para o seu torneio!`);
     
-    setTimeout(()=>{window.location = "main.html"}, 3000);
+    setTimeout(()=>{window.location.replace('main.html')}, 3000);
 }

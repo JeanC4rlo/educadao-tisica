@@ -8,7 +8,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="CSS/index.css">
+    <link rel="stylesheet" href="CSS/popup.css">
+    <link rel="stylesheet" href="CSS/formularioTorneio.css">
+    <link rel="stylesheet" href="CSS/table.css">
 </head>
 <body>
     <header>
@@ -16,24 +18,20 @@
     </header>
 
     <main>
-        <section class="main-section">
-            <div class="main-section-text">
-                <h1>Crie e Organize seus torneios já!</h1>
-                <p>Simples e fácil, do amador ao profissional, aqui é seu lugar!</p>
-                <h3>R$ 0,00</h3>
-                <button class="main-button" onclick="window.location = 'login.html'">Criar Agora!</button>
-                <button class="main-button" onclick="window.location = 'premium.html'">Versão Premium</button>
-            </div>  
-            <img src="Imagens/futebol.jpeg">
-        </section>
+        <div class="surface-geracao-automatica"></div>
     </main>
+
     
+    <div id="popup" class="popup"></div>
 
     <script src="main.js"></script>
+    <script src="Js/PopUp.js"></script>
+    <script src="Js/Session.js"></script>
     
+    <script src="Js/Torneio.js"></script>
     <script src="Js/GerenciamentoTorneios.js"></script>
     <script src="Js/GerenciamentoConfrontos.js"></script>
-    <script src="Js/addSpecialTorneios.js"></script>
     <script src="Js/GeraçãoAutomaticaConfrontos.js"></script>
+    <script src="Js/CriarConfrontosPersonalizados.js"></script>
 </body>
-</html>
+</html>   

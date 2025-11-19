@@ -70,5 +70,5 @@ function addCompetidorBASIC(ID_TORNEIO, Competidor){
 
 function endOfEvent(){
     abrirPopUp("Adicionado Com Sucesso!");
-    setTimeout(()=>{window.location = "main.html"}, 2000);
+    setTimeout(()=>{window.location.replace('main.html')}, 2000);
 }

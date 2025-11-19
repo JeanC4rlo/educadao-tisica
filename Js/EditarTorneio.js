@@ -78,8 +78,8 @@ function loadAddConfronto(){
         string = `
             <div class="formulario addCompetidor">
                 <h2>Adicionar Confronto:</h2>
+                <button onclick="window.location.replace('geracaoAutomatica.html')">Gerar Automaticamente</button>
                 <form onsubmit="addConfronto(event)">
-
                     <h3>Data do Confronto:</h3>
                     <input id="dataCompeticao" type="date">
 

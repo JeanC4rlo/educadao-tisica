@@ -340,4 +340,5 @@ let Brasileirao = {
 
 if(!getTorneioById(1002)){
     addTorneioBASIC(Brasileirao);
+    gerarConfrontos(1002, 3);
 }

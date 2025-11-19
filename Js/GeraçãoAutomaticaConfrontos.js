@@ -81,5 +81,3 @@ function gerarConfrontos(ID_Torneio, saltoDias) {
 
     return totalCriados;
 }
-
-gerarConfrontos(1002, 3);
