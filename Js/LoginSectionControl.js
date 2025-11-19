@@ -4,20 +4,23 @@ const SECAO_CADASTRO = document.getElementById("cadastroSection");
 function carregarSectionLogin(){
     let string = "";
 
-    //Template p mexer dps q o CSS tiver pronto! Trabalhe Jeans!
     string += 
     `
-        <h2>Login:</h2>
-        <input id="usuarioInput" type="text" placeholder="Usuário">
-        <br>
-        <input id="senhaInput" type="password" placeholder="Senha">
-        <br><br>
-        <button id="loginButton" onclick="login()">Entrar</button>
-        <button id="cadastroButton" onclick="carregarSectionCadastro()">Cadastrar</button>
-
-        <ul>
-            <li>Seu usuário é o seu nome!</li>
-        </ul>
+        <div class="login-surface">
+            <h2>Entre para: Organizar e Acompanhar seus campeonatos!</h2>
+            
+            <div class="login-inputs-surface">
+                <input class="login-input" id="usuarioInput" type="email" placeholder="Email">
+                <input class="login-input" id="senhaInput" type="password" placeholder="Senha">
+            </div>
+            
+            
+            <div class="login-buttons-surface">
+                <button id="loginButton" onclick="login()">Entrar</button>
+                <button id="cadastroButton" onclick="carregarSectionCadastro()">Cadastrar</button>
+            </div>
+            
+        </div>
     `;
 
     SECAO_LOGIN.innerHTML = string;
@@ -26,37 +29,50 @@ function carregarSectionLogin(){
 
 function carregarSectionCadastro(){
     let string = "";
-    
-    //Template p mexer dps q o CSS tiver pronto! Trabalhe Jeans!
+
     string += 
     `
-            <h2>Cadastro:</h2>
-            <form onsubmit="cadastrar(event)">
-                <input id="nomeInput" type="text" placeholder="Nome" required>
-                <input id="sobrenomeInput" type="text" placeholder="Sobrenome">
-                <br><br>
-                
-                <select id="nacionalidade" required>
-                    <option value="ARG">Argentina</option>
-                    <option value="BR" selected>Brasil</option>
-                    <option value="COL">Colômbia</option>
-                    <option value="USA">Estados Unidos</option>
-                    <option value="PT">Portugal</option>
-                    <option value="VNZ">Venezuela</option>
-                </select>
-                <br><br>
+            <div class="cadastro-surface">
+                <h2>Cadastro:</h2>
+                <form onsubmit="cadastrar(event)">
+                    <div class="input-text-surface">
+                        <input id="nomeInput" class="input-padrao" type="text" placeholder="Nome" required>
+                        <input id="sobrenomeInput" class="input-padrao" type="text" placeholder="Sobrenome">
+                    </div>
+                    
+                    <select class="select" id="nacionalidade" required>
+                        <option value="ARG">Argentina</option>
+                        <option value="BR" selected>Brasil</option>
+                        <option value="COL">Colômbia</option>
+                        <option value="USA">Estados Unidos</option>
+                        <option value="PT">Portugal</option>
+                        <option value="VNZ">Venezuela</option>
+                    </select>
 
-                <input type="radio" name="nivel" value="Organizador"> Organizador
-                <input type="radio" name="nivel" value="Visitante"> Visitante
-                <br><br>
+                    <div>
+                        <label class="radio">
+                            <input type="radio" name="nivel" value="Organizador">
+                            <span class="checkmark"></span>
+                            Organizador
+                        </label>
 
-                <input id="emailInput" type="email" placeholder="seuemail@email.com" required>
-                <input id="senhaInput" type="password" placeholder="Crie uma Senha" required>
+                        <label class="radio">
+                            <input type="radio" name="nivel" value="Visitante">
+                            <span class="checkmark"></span>
+                            Visitante
+                        </label>
+                    </div>
 
-                <br><br>
-                <button type="submit" id="loginButton">Registrar</button>
-                <button onclick="carregarSectionLogin()">Voltar</button>
-            </form>
+                    <div class="input-text-surface">
+                        <input id="emailInput" class="input-padrao" type="email" placeholder="seuemail@email.com" required>
+                        <input id="senhaInput" class="input-padrao" type="password" placeholder="Crie uma Senha" required>
+                    </div>
+                    <div class="cadastro-buttons-surface">    
+                        <button type="submit" id="loginButton">Registrar</button>
+                        <button onclick="carregarSectionLogin()">Voltar</button>
+                    <div>
+                </form>
+            </div>
     `;
 
     SECAO_CADASTRO.innerHTML = string;

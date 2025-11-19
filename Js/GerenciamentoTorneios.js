@@ -53,8 +53,14 @@ function createTorneio(autorP, nomeP, descricaoP, visibilidadeP, esporteP, tipoP
     
     TORNEIOS_ATIVOS.push(DadosNovoTorneio);
     salvarTorneiosAtivos(TORNEIOS_ATIVOS);
-    
 }
+
+function addTorneioBASIC(torneio){
+    const TORNEIOS = obterTorneiosAtivos();
+    TORNEIOS.push(torneio);
+    salvarTorneiosAtivos(TORNEIOS);
+}
+
 
 function getTorneio(nome) {
     const TORNEIOS_ATIVOS = obterTorneiosAtivos();
@@ -70,10 +76,13 @@ function getTorneio(nome) {
 function getTorneioById(id) {
     const TORNEIOS_ATIVOS = obterTorneiosAtivos();
 
-    for (let torneio of TORNEIOS_ATIVOS) {
-        if (torneio.id === id) {
-            return torneio;
+    if(TORNEIOS_ATIVOS != null || TORNEIOS_ATIVOS != undefined){
+        for (let torneio of TORNEIOS_ATIVOS) {
+            if (torneio.id === id) {
+                return torneio;
+            }
         }
-    }
+    } 
+    
     return null;
 }

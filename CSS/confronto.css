@@ -1,0 +1,40 @@
+.confronto-surface{
+    background-color: rgba(255, 255, 255, 0.158);
+    box-shadow: 1px 1px 19px 2px #0000005e;
+
+    border-radius: 8px;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.confronto-collection{
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.confronto-surface p{
+    margin: 0.1rem;
+}
+
+.confronto-table{
+    margin-top: 1rem;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.confronto-lado{
+    background-image: linear-gradient(rgba(31, 73, 211, 0.925), rgba(13, 59, 187, 0.911));
+    padding: 5px;
+}
+
+.confronto-result{
+    background-image: linear-gradient(rgba(49, 49, 49, 0.925), rgba(31, 31, 31, 0.911));
+    padding: 5px;
+}
+
+.confronto-mid{
+    padding: 5px;
+}

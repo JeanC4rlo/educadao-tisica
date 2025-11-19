@@ -7,14 +7,32 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="CSS/index.css">
 </head>
 <body>
     <header>
         <custom-logo></custom-logo>
     </header>
 
-    <button onclick="window.location = 'login.html'">Login</button>
+    <main>
+        <section class="main-section">
+            <div class="main-section-text">
+                <h1>Crie e Organize seus torneios já!</h1>
+                <p>Simples e fácil, do amador ao profissional, aqui é seu lugar!</p>
+                <h3>R$ 0,00</h3>
+                <button class="main-button" onclick="window.location = 'login.html'">Criar Agora!</button>
+            </div>  
+            <img src="Imagens/futebol.jpeg">
+        </section>
+    </main>
+    
 
     <script src="main.js"></script>
+    
+    <script src="Js/GerenciamentoTorneios.js"></script>
+    <script src="Js/GerenciamentoConfrontos.js"></script>
+    <script src="Js/addSpecialTorneios.js"></script>
+    <script src="Js/GeraçãoAutomaticaConfrontos.js"></script>
 </body>
 </html>

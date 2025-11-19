@@ -12,7 +12,6 @@ function lerAtletas(){
 function addCompetidor(event){
     event.preventDefault();
 
-    console.log("oi?");
     const NOME = document.getElementById("nomeCompetidor").value.trim();
     const TIPO = document.querySelector('input[name="tipoCompetidor"]:checked');
     const TIPO_COMPETIDOR = TIPO ? TIPO.value : "";
@@ -54,4 +53,22 @@ function addCompetidor(event){
     });
 
     salvarTorneiosAtivos(TORNEIOS);
+    endOfEvent();
+}
+
+function addCompetidorBASIC(ID_TORNEIO, Competidor){
+    const TORNEIOS = obterTorneiosAtivos();
+
+    TORNEIOS.forEach(torneio => {
+        if(torneio.id == ID_TORNEIO){
+            torneio.participantes.push(Competidor);
+        }
+    });
+
+    salvarTorneiosAtivos(TORNEIOS);
+}
+
+function endOfEvent(){
+    abrirPopUp("Adicionado Com Sucesso!");
+    setTimeout(()=>{window.location = "main.html"}, 2000);
 }

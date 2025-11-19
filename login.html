@@ -9,6 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="CSS/popup.css">
+    <link rel="stylesheet" href="CSS/login.css">
+    <link rel="stylesheet" href="CSS/cadastro.css">
 </head>
 <body>
     <header>
@@ -17,35 +19,7 @@
 
     <main>
         <section id="loginSection"></section>
-
-        <section id="cadastroSection">
-            <h2>Cadastro:</h2>
-            <form onsubmit="cadastrar(event)">
-                <input id="nomeInput" type="text" placeholder="Nome" required>
-                <input id="sobrenomeInput" type="text" placeholder="Sobrenome">
-                <br><br>
-                
-                <select id="nacionalidade" required>
-                    <option value="ARG">Argentina</option>
-                    <option value="BR" selected>Brasil</option>
-                    <option value="COL">Colômbia</option>
-                    <option value="USA">Estados Unidos</option>
-                    <option value="PT">Portugal</option>
-                    <option value="VNZ">Venezuela</option>
-                </select>
-                <br><br>
-
-                <input type="radio" name="nivel" value="Organizador"> Organizador
-                <input type="radio" name="nivel" value="Visitante"> Visitante
-                <br><br>
-
-                <input id="emailInput" type="email" placeholder="seuemail@email.com" required>
-                <input id="senhaInput" type="password" placeholder="Crie uma Senha" required>
-
-                <br><br>
-                <button type="submit" id="loginButton">Registrar</button>
-            </form>
-        </section>
+        <section id="cadastroSection"></section>
     </main>
     
     <div id="popup" class="popup"></div>

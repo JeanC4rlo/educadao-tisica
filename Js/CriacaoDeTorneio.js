@@ -16,59 +16,91 @@ function abrirSecao(id){
 function IniciarSecaoCriacao(){
     let string = "";
 
-    //Template p mexer dps q o CSS tiver pronto! Trabalhe Jeans!
     string += 
     `
-        <h2>Criar Torneio:</h2>
+        <div class="formulario-surface">
+            <h1>Criar Torneio:</h1>
             <form onsubmit="cadastrarTorneio(event)">
-            <input id="nomeTorneio" type="text" placeholder="Nome do Torneio">
-            <br>
-            <textarea id="descricao" rows="4" cols="30" placeholder="Descrição do Torneio..."></textarea>
-            <br><br>
-            
-            <input type="radio" name="visibilidade" value="Publico"> Publico
-            <input type="radio" name="visibilidade" value="Privado"> Privado
-            <br><br>
+                <div class="formulario-section">
+                    <h2>Dados Iniciais:</h2>
+                    <input class="input-texto" id="nomeTorneio" type="text" placeholder="Nome do Torneio">
+                    <textarea class="textArea" id="descricao" rows="1" cols="30" placeholder="Descrição do Torneio..."></textarea>
+                </div>             
+                
+                <div class="formulario-section">
+                    <div>
+                        <h2>Tipo :</h2>
+                        
+                        <label class="radio">
+                            <input type="radio" name="estilo" value="Eliminatorias"> 
+                            <span class="checkmark"></span>
+                            Eliminatórias
+                        </label>
 
-            <select id="esporte" required>
-                <option value="FUTEBOL" selected>Futebol</option>
-                <option value="BASQUETE">Basquete</option>
-                <option value="VOLEI">Volei</option>
-                <option value="FUTEBOLAMERICANO">Futebol Amereicano</option>
-                <option value="XADREZ">Xadrez</option>
-                <option value="CUSTOM">Personalizado...</option>
-            </select>
-            <br>
+                        <label class="radio">
+                            <input type="radio" name="estilo" value="Liga"> 
+                            <span class="checkmark"></span>
+                            Pontos Corridos
+                        </label>   
+                    </div>  
 
-            <h2>Configurar Tabela:</h2>
-                    
-            <table id="placar-config">
-                <tr>
-                    <th>Lado A</th>
-                    <th>Versus</th>
-                    <th>Lado B</th>
-                </tr>
-                <tr>
-                    <th>1</th>
-                    <th>-</th>
-                    <th>1</th>
-                </tr>
-            </table>
+                    <div>
+                        <h2>Visibilidade:</h2>
 
-            <h3>Quantidade de Sets:</h3>
-            <input type="number" min="1" id="qntSets" value="1">
-            <br><br>
+                        <label class="radio">
+                            <input type="radio" name="visibilidade" value="Publico">
+                            <span class="checkmark"></span>
+                            Publico
+                        </label>
 
-            <h3>Valor dos Pontos:</h3>
-            <input type="number" min="1" id="ptsValue" value="1">
-            <br><br>
+                        <label class="radio">
+                            <input type="radio" name="visibilidade" value="Privado"> 
+                            <span class="checkmark"></span>
+                            Privado
+                        </label>   
+                    </div> 
+                </div>
+                           
 
-            <input type="radio" name="estilo" value="Eliminatorias"> Eliminatórias
-            <input type="radio" name="estilo" value="Liga"> Pontos Corridos
-            <br><br>
+                <div class="formulario-section">
+                    <h2>Seu Esporte:</h2>
+                    <select class="select" id="esporte" required>
+                        <option class="select-option" value="FUTEBOL" selected>Futebol</option>
+                        <option class="select-option" value="BASQUETE">Basquete</option>
+                        <option class="select-option" value="VOLEI">Volei</option>
+                        <option class="select-option" value="FUTEBOLAMERICANO">Futebol Amereicano</option>
+                        <option class="select-option" value="XADREZ">Xadrez</option>
+                        <option class="select-option" value="CUSTOM">Personalizado...</option>
+                    </select>
+                </div>
 
-            <button type="submit">Criar Torneio!</button>
-        </form>
+                <h2>Configurar Tabela:</h2>
+                        
+                <table id="placar-config">
+                    <tr>
+                        <th>Lado A</th>
+                        <th>Versus</th>
+                        <th>Lado B</th>
+                    </tr>
+                    <tr>
+                        <th>1</th>
+                        <th>-</th>
+                        <th>1</th>
+                    </tr>
+                </table>
+
+                <div class="formulario-section">
+                    <h2>Quantidade de Sets:</h2>
+                    <input class="input-number" type="number" min="1" id="qntSets" value="1">
+
+                    <h2>Valor dos Pontos:</h2>
+                    <input class="input-number" type="number" min="1" id="ptsValue" value="1"> 
+                </div>
+
+                <button class="submit-button" type="submit">Criar Torneio!</button>
+            </form>
+        </div>
+        
     `;
 
     SECAO_CRIACAO.innerHTML = string;

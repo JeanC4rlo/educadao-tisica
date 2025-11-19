@@ -21,7 +21,7 @@ function loadSecaoMenu(id){
     SECAO_MENU.innerHTML = `
         <div class="menu-options">
             ${botoes.map((botao, index) => {
-                const isAtivo = (index + 1) === id ? 'id="option-target"' : '';
+                const isAtivo = (index + 1) === id ? 'class="option-target"' : '';
                 return `<button ${isAtivo} onclick="${botao.acao}">${botao.texto}</button>`;
             }).join("")}
         </div>

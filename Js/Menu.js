@@ -11,15 +11,14 @@ function montarMenu(){
     const usuario = getUsuario();
 
     let stringHtml = `
-        <div class="avatar">${usuario.nome.slice(0, 2)}</div>
+        <div onclick="window.location = 'mostrarUsuario.html'" class="avatar">${usuario.nome.slice(0, 2)}</div>
         <h1>Bem Vindo ${usuario.nome} ${usuario.sobrenome}!</h1>
-        <p>🌐: ${getPaisString(usuario.pais)}</p>
     `;
 
     const TORNEIOS_ATIVOS = obterTorneiosAtivos();
 
     TELA_BOAS_VINDAS.innerHTML = stringHtml;
-    stringHtml = "<h2>👤 Meus Torneios:</h2>";
+    stringHtml = "<h2>Meus Torneios:</h2>";
 
     let vazio = true;
     TORNEIOS_ATIVOS.forEach(torneio =>{
@@ -33,7 +32,7 @@ function montarMenu(){
                         <p>Esporte: <b>${torneio.esporte}</b> | Visibilidade: <b>${torneio.visibilidade}</b></p>
                         <p>${torneio.descricao.slice(0, 50)}...</p>
                         <button onclick="verTorneio('${torneio.nome}')">Ver Mais</button>
-                        <button onclick="">Editar</button>
+                        <button onclick="editarTorneio('${torneio.nome}')">Editar</button>
                     </div>
                 </div>
             `;
@@ -44,7 +43,7 @@ function montarMenu(){
     }
     TELA_MEUS_TORNEIOS.innerHTML = stringHtml;
     
-    stringHtml = "<h2>🔥 Torneios: </h2>";
+    stringHtml = "<h2>Torneios Ativos: </h2>";
 
     if(TORNEIOS_ATIVOS.length == 0){
         stringHtml += "<p>Sem torneios</p>"
@@ -57,7 +56,7 @@ function montarMenu(){
                         <img src="${getImgEsporte(torneio.esporte)}">
                         <div class="torneio-dados">
                             <h3>${torneio.nome}</h3>
-                            <p>👤 Autor: @${torneio.autor}</p>
+                            <p>Autor: @${torneio.autor}</p>
                             <p>${torneio.descricao.slice(0, 50)}...</p>
                             <button onclick="verTorneio('${torneio.nome}')">Ver Mais</button>
                         </div>
@@ -79,4 +78,10 @@ function verTorneio(nome){
     const TORNEIO = getTorneio(nome);
     torneioTarget(TORNEIO);
     window.location = "torneio.html";
+}
+
+function editarTorneio(nome){
+    const TORNEIO = getTorneio(nome);
+    torneioTarget(TORNEIO);
+    window.location = "EditarTorneio.html";
 }

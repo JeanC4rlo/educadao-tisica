@@ -1,9 +1,20 @@
-table{
-  border:1px solid black;
-}
-th{
-  background-color: rgb(0, 0, 0);
-  color: white;
-  padding: 5px;
+table {
+  background-color: rgba(255, 255, 255, 0.904);
+  border-radius: 8px;
+  padding: 0.2rem;
 }
 
+th,
+td:hover {
+  padding: 0.3rem;
+  background-image: linear-gradient(rgba(31, 73, 211, 0.925), rgba(13, 59, 187, 0.911));
+  box-shadow: 1px 1px 19px 2px #0000005e;
+  transition: all 100ms ease-in-out;
+}
+
+td,
+th:hover {
+  padding: 0.3rem;
+  background-color: rgba(29, 29, 29, 0.658);
+  transition: all 100ms ease-in-out;
+}

@@ -4,6 +4,8 @@ const ESPORTES_IMG = {
     VOLEI: "Imagens/volei.webp",
     FUTEBOLAMERICANO: "Imagens/americanoFutebol.webp",
     XADREZ: "Imagens/xadrez.jpg",
+    CHAMPIONS: "Imagens/champions.png",
+    BRASILEIRAO: "Imagens/brasileirao.png",
     CUSTOM: "Imagens/esportes.webp",
 }
 

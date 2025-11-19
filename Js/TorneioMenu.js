@@ -14,15 +14,17 @@ function mostrarTorneio(){
         stringHtml += `
             <div class="show-torneio">
                 <img src="${getImgEsporte(TORNEIO.esporte)}">
-                <h2>${TORNEIO.nome}</h2>
-                <a href="">Autor: @${TORNEIO.autor}</a>
-                <p>Descrição: ${TORNEIO.descricao}</p>
+                <div class="dados-torneio">
+                    <h2>${TORNEIO.nome}</h2>
+                    <a href="">Autor: @${TORNEIO.autor}</a>
+                    <p>Descrição: ${TORNEIO.descricao}</p>
 
-                <h3>Mais Informações:</h3>
-                <p>Esporte: ${TORNEIO.esporte}</p>
-                <p>Campeonato: ${TORNEIO.tipoCampeonato}</p>
-                <p id="numero-de-seguidores">💫 Hype: ${TORNEIO.seguidores}</p>
-                <button id="botao-seguir" onclick="ficSeguidores(${TORNEIO.seguidores})">Hypar</button>
+                    <h3>Mais Informações:</h3>
+                    <p>Esporte: ${TORNEIO.esporte}</p>
+                    <p>Campeonato: ${TORNEIO.tipoCampeonato}</p>
+                    <p id="numero-de-seguidores">💫 Hype: ${TORNEIO.seguidores}</p>
+                    <button id="botao-seguir" onclick="ficSeguidores(${TORNEIO.seguidores})">Hypar</button>
+                </div>
             </div>
         `;
     }
@@ -38,29 +40,23 @@ function mostrarConfrontos(){
         stringHtml += `<p><b>${TORNEIO.nome}</b> ainda não possui confrontos definidos.</p>`;
     } else{
         const Array = TORNEIO.confrontos.slice().reverse();
+            stringHtml += `<div class='confronto-collection'><p>(${Array.length}) Confrontos:</p>`;
             Array.forEach(confronto => {
-                if(confronto.status == "concluído"){
                     stringHtml += `
-                            <div>
-                                <p>Data: ${confronto.data} | local: ${confronto.local}</p>
-                                <div>${confronto.nomeLadoA}</div>
-                                <div>Versus</div>
-                                <div>${confronto.nomeLadoB}</div>
+                            <div class="confronto-surface">
+                                <p>Confronto ${confronto.status}</p>
+                                <p>Data: ${confronto.data} | local: ${confronto.lugar}</p>
+                                <div class="confronto-table">
+                                    <div class="confronto-lado">${confronto.ladoA}</div>
+                                    <div class="confronto-result">${confronto.resultadoA}</div>
+                                    <div class="confronto-mid">X</div>
+                                    <div class="confronto-result">${confronto.resultadoB}</div>
+                                    <div class="confronto-lado">${confronto.ladoB}</div>
+                                </div>
                             </div>
-                    `;
-                } else {
-                    stringHtml += `
-                            <div>
-                                <p>Data: ${confronto.data} | local: ${confronto.local}</p>
-                                <div>${confronto.nomeLadoA}</div>
-                                <div>${confronto.placarLadoA}</div>
-                                <div>Versus</div>
-                                <div>${confronto.placarLadoB}</div>
-                                <div>${confronto.nomeLadoB}</div>
-                            </div>
-                    `;
-                }
-        });
+                    `;    
+            });
+            stringHtml += "</div>";
     }
     SECAO_VIEW.innerHTML = stringHtml;
     loadSecaoMenu(2);
@@ -77,7 +73,7 @@ function mostrarCompetidores(){
         stringHtml += `
                     <table id="tabela-participantes">
                     <tr>
-                        <th> - </th>
+                        <th> </th>
                         <th> Participantes: </th>
                         <th> Tipo: </th>
                     </tr>
@@ -86,9 +82,9 @@ function mostrarCompetidores(){
         Array.forEach(participante => {
             stringHtml += `
                     <tr>
-                        <th> - </th>
-                        <th> ${participante.nome} </th>
-                        <th> ${participante.tipo} </th>
+                        <td> </td>
+                        <td> ${participante.nome} </td>
+                        <td> ${participante.tipo} </td>
                     </tr>
             `;
         });

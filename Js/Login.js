@@ -13,7 +13,7 @@ function login(){
         let encontrado = false;
         
         ListaUsuariosAtual.forEach(usuario => {
-            if(usuario.nome === USUARIO){
+            if(usuario.email === USUARIO){
                 encontrado = true;
                 if(usuario.senha === SENHA){
                     setUsuario(usuario);
