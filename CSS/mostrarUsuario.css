@@ -1,0 +1,26 @@
+.dados-usuario-surface{
+    font-family: Inter;
+    color: white;
+    background-image: linear-gradient(rgba(31, 73, 211, 0.925), rgba(13, 59, 187, 0.911));
+    box-shadow: 1px 1px 19px 5px #000000a2;
+    
+    margin: 10px 0px;
+    border-radius: 8px;
+    padding: 8px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 1rem;
+}
+
+.dados{
+    border: 2px black solid;
+    padding: 1rem;
+}
+
+.opcoes{
+    border: 2px black solid;
+    padding: 1rem;
+}

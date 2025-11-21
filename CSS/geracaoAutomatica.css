@@ -1,0 +1,18 @@
+.form-layer{
+    font-family: Inter;
+    background-color: rgb(94, 164, 204);
+    padding: 1rem;
+}
+
+.formulario form{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.aviso{
+    font-family: Inter;
+    color: white;
+    background-color: rgb(170, 64, 64);
+    padding: 1rem;
+}
