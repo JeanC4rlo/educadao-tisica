@@ -9,7 +9,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="/main.css">
-    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/popup.css">
+    <link rel="stylesheet" href="/css/geracao-automatica.css">
+
 </head>
 <body>
     <header>
@@ -17,25 +19,20 @@
     </header>
 
     <main>
-        <section class="main-section">
-            <div class="main-section-text">
-                <h1>Crie e organize seus torneios já!</h1>
-                <p>Simples e fácil, do amador ao profissional, aqui é seu lugar!</p>
-                <h3>R$ 0,00</h3>
-                <a class="main-button" href="/html/login.html">Criar agora!</a>
-                <a class="main-button" href="/html/premium.html">Versão premium</a>
-            </div>  
-            <img src="/images/futebol.jpeg">
-        </section>
+        <div class="surface-geracao-automatica"></div>
     </main>
+
     
+    <div id="popup" class="popup"></div>
 
     <script src="/js/Logo.js"></script>
+    <script src="/js/popUp.js"></script>
+    <script src="/js/session.js"></script>
     
+    <script src="/js/torneio.js"></script>
     <script src="/js/gerenciamentoTorneios.js"></script>
     <script src="/js/gerenciamentoConfrontos.js"></script>
-    
     <script src="/js/geracaoAutomaticaConfrontos.js"></script>
-    <script src="/js/torneiosEspeciais.js"></script>
+    <script src="/js/criarConfrontosPersonalizados.js"></script>
 </body>
-</html>
+</html>   

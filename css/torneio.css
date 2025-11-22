@@ -1,0 +1,98 @@
+.torneio-title{
+    font-family: Inter;
+    color: rgb(18, 70, 182);
+}
+
+.menu-options{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5px;
+}
+
+.menu-options button{
+    font-family: Inter;
+
+    background-color: rgba(255, 255, 255, 0.158);
+    box-shadow: 1px 1px 19px 2px #0000005e;
+    border-radius: 8px;
+
+    font-size: 14pt;
+
+    border: none;
+    cursor: pointer;
+}
+
+.option-target{
+    color: white;
+    background-image: linear-gradient(rgba(31, 73, 211, 0.925), rgba(13, 59, 187, 0.911));
+    
+    font-weight: bold;
+    border-bottom: rgba(255, 255, 255, 0.288) 2px solid;
+}
+
+.torneio-view{
+    margin: 0px;
+    color: white;
+    background-image: linear-gradient(rgba(31, 73, 211, 0.925), rgba(13, 59, 187, 0.911));
+    box-shadow: 1px 1px 19px 2px #0000005e;
+
+    border-radius: 8px;
+    padding: 8px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.torneio-view *{
+    font-family: Inter;
+}
+
+.torneio-view h1{
+    margin: 0.5rem;
+}
+
+.show-torneio{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    gap: 1rem;
+}
+
+.show-torneio img{
+    width: 20%;
+    height: 20%;
+
+    border-radius: 8px;
+    box-shadow: 1px 1px 19px 5px #0000002a;
+    
+    border: rgba(255, 255, 255, 0.514) 4px solid;
+    border-bottom: rgba(255, 255, 255, 0.171) 4px solid;
+}
+
+.show-torneio .dados-torneio{
+    padding: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.089);
+    box-shadow: 1px 1px 19px 5px #0000005e;
+
+    border-radius: 8px;
+}
+
+.numero-de-seguidores{
+    padding: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.089);
+    
+    border-radius: 8px;
+}
+
+.botao-seguir{
+    border: none;
+    color: white;
+    border-radius: 8px;
+
+    padding: 0.5rem;
+    background-image: linear-gradient(rgba(15, 44, 138, 0.925), rgba(6, 31, 100, 0.911));
+    box-shadow: 1px 1px 19px 5px #0000006b;
+}
+

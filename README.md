@@ -7,7 +7,7 @@ Coisas Pra Gente apresentar no Trabalho do Cleitão:
   - Muitos Torneios são acessados por várias pessoas no mundo. Campeonatos de Futebol Gigantes com Brasileirão, Champions... e até de outros esportes podem ser       acompanhados facilmente dando um google, entretanto às vezes torna-se dificil acompanhar alguns campeonatos de pequeno porte, regionais, amadores, e até torneios entre amigos, nossa missão é facilitar o acompanhamento à estes torneios e seu gerenciamento. 😉
 
 ## SISTEMINHA NOSSO:
- - Tudo FrontEnd Html, Css, Js
+ - Tudo FrontEnd Html, Css, js
  - Cadastra Usuários e seus torneios
  - Cadastra equipes e confrontos à Torneios
 
